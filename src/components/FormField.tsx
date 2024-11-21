@@ -7,7 +7,13 @@ interface FormFieldProps {
   onChange: (name: string, value: string) => void;
 }
 
+/**
+ * FormField component that renders different types of form inputs based on configuration.
+ * Currently supports text inputs and dropdowns.
+ * Handles styling, accessibility, and state management for individual form fields.
+ */
 export const FormField: React.FC<FormFieldProps> = ({ field, value, onChange }) => {
+  // Render dropdown select input
   if (field.type === 'dropdown') {
     return (
       <div className="mb-4">
@@ -26,6 +32,7 @@ export const FormField: React.FC<FormFieldProps> = ({ field, value, onChange }) 
           onChange={(e) => onChange(field.name, e.target.value)}
         >
           <option value="">Select {field.label}</option>
+          {/* Map through provided options */}
           {field.options?.map((option) => (
             <option key={option} value={option}>
               {option}
@@ -36,6 +43,7 @@ export const FormField: React.FC<FormFieldProps> = ({ field, value, onChange }) 
     );
   }
 
+  // Render text input (default)
   return (
     <div className="mb-4">
       <label 

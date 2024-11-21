@@ -16,4 +16,34 @@ describe('formService', () => {
     expect(firstField).toHaveProperty('label');
     expect(firstField).toHaveProperty('type');
   });
+
+  it('returns a Promise that resolves', () => {
+    expect(getFormConfig()).toBeInstanceOf(Promise);
+    return expect(getFormConfig()).resolves.toBeDefined();
+  });
+
+  it('returns the correct structure for form fields', async () => {
+    const config = await getFormConfig();
+    const personalInfo = config.questions[0];
+    const addressInfo = config.questions[1];
+
+    // Test first section
+    expect(personalInfo.title).toBe('Tell us about yourself');
+    expect(personalInfo.fields).toHaveLength(4);
+    expect(personalInfo.fields[0]).toEqual({
+      name: 'first_name',
+      label: 'First Name',
+      type: 'text'
+    });
+
+    // Test second section
+    expect(addressInfo.title).toBe('Where do you live?');
+    expect(addressInfo.fields).toHaveLength(3);
+    expect(addressInfo.fields[2]).toEqual({
+      name: 'country',
+      label: 'Country',
+      type: 'dropdown',
+      options: ['Canada', 'USA']
+    });
+  });
 }); 

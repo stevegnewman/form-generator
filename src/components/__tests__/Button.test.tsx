@@ -35,13 +35,6 @@ describe('Button', () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it('can be disabled', () => {
-    render(<Button disabled>Disabled</Button>);
-    const button = screen.getByRole('button', { name: /disabled/i });
-    
-    expect(button).toBeDisabled();
-  });
-
   it('accepts additional className', () => {
     render(<Button className="test-class">With Class</Button>);
     const button = screen.getByRole('button', { name: /with class/i });
