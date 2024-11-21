@@ -63,4 +63,40 @@ describe('FormField', () => {
     fireEvent.change(screen.getByRole('combobox'), { target: { value: 'Canada' } });
     expect(mockOnChange).toHaveBeenCalledWith('country', 'Canada');
   });
+
+  /* Snapshot tests */
+  it('matches snapshot for text input', () => {
+    const textField = {
+      name: 'test_field',
+      label: 'Test Field',
+      type: 'text' as const
+    };
+
+    const { container } = render(
+      <FormField 
+        field={textField} 
+        value="" 
+        onChange={mockOnChange} 
+      />
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot for dropdown', () => {
+    const dropdownField = {
+      name: 'test_dropdown',
+      label: 'Test Dropdown',
+      type: 'dropdown' as const,
+      options: ['Option 1', 'Option 2']
+    };
+
+    const { container } = render(
+      <FormField 
+        field={dropdownField} 
+        value="" 
+        onChange={mockOnChange} 
+      />
+    );
+    expect(container).toMatchSnapshot();
+  });
 }); 

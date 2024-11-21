@@ -41,4 +41,25 @@ describe('Button', () => {
     
     expect(button).toHaveClass('test-class');
   });
+
+
+  /* Snapshot tests */
+  it('matches snapshot for primary button', () => {
+    const { container } = render(<Button>Primary Button</Button>);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot for secondary button', () => {
+    const { container } = render(
+      <Button variant="secondary">Secondary Button</Button>
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot for full width button', () => {
+    const { container } = render(
+      <Button fullWidth>Full Width Button</Button>
+    );
+    expect(container).toMatchSnapshot();
+  });
 }); 

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormField matches snapshot for dropdown 1`] = `
+<div>
+  <div
+    class="mb-4"
+  >
+    <label
+      class="block text-bodyText text-sm font-bold mb-2"
+      for="test_dropdown"
+    >
+      Test Dropdown
+    </label>
+    <select
+      class="border rounded w-full py-2 px-3 text-bodyText focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all duration-200 cursor-pointer"
+      id="test_dropdown"
+    >
+      <option
+        value=""
+      >
+        Select 
+        Test Dropdown
+      </option>
+      <option
+        value="Option 1"
+      >
+        Option 1
+      </option>
+      <option
+        value="Option 2"
+      >
+        Option 2
+      </option>
+    </select>
+  </div>
+</div>
+`;
+
+exports[`FormField matches snapshot for text input 1`] = `
+<div>
+  <div
+    class="mb-4"
+  >
+    <label
+      class="block text-bodyText text-sm font-bold mb-2"
+      for="test_field"
+    >
+      Test Field
+    </label>
+    <input
+      class="appearance-none border rounded w-full py-2 px-3 text-bodyText focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all duration-200"
+      id="test_field"
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;

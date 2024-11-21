@@ -143,4 +143,37 @@ describe('Form', () => {
     expect(screen.getByText(/please complete form/i)).toBeInTheDocument();
     expect(mockOnSubmit).not.toHaveBeenCalled();
   });
+
+  /* Snapshot tests */
+  it('matches snapshot for initial render', () => {
+    const { container } = render(
+      <Form config={mockConfig} onSubmit={mockOnSubmit} />
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot with filled form data', () => {
+    const { container } = render(
+      <Form config={mockConfig} onSubmit={mockOnSubmit} />
+    );
+
+    fireEvent.change(screen.getByLabelText('Test Field'), {
+      target: { value: 'test value' }
+    });
+
+    fireEvent.change(screen.getByLabelText('Test Dropdown'), {
+      target: { value: 'Option 1' }
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot with error state', () => {
+    const { container } = render(
+      <Form config={mockConfig} onSubmit={mockOnSubmit} />
+    );
+
+    fireEvent.submit(screen.getByRole('button'));
+    expect(container).toMatchSnapshot();
+  });
 }); 

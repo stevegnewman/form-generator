@@ -14,4 +14,10 @@ describe('Footer', () => {
     expect(screen.getByRole('separator')).toBeInTheDocument();
     expect(screen.getByRole('separator')).toHaveClass('border-primary');
   });
+
+  /* Snapshot tests */
+  it('matches snapshot', () => {
+    const { container } = render(<Footer />);
+    expect(container).toMatchSnapshot();
+  });
 }); 
