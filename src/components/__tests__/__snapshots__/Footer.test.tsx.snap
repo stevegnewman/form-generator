@@ -11,7 +11,7 @@ exports[`Footer matches snapshot 1`] = `
     <div
       class="text-center text-white text-sm py-10"
     >
-      Submitted by Steve Newman, 21st November 2024
+      Submitted for review by Steve Newman, 22nd November 2024
     </div>
   </footer>
 </div>

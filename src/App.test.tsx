@@ -73,9 +73,7 @@ describe('App', () => {
     };
 
     // Updated expectations to match new console.log messages
-    expect(consoleSpy).toHaveBeenCalledWith('Form Data (complete object):');
-    expect(consoleSpy).toHaveBeenCalledWith(expectedFormData);
-    expect(consoleSpy).toHaveBeenCalledWith('\nForm Data (key-value pairs):');
+    expect(consoleSpy).toHaveBeenCalledWith('\nForm Data (formData state variable output as key-value pairs):');
     expect(consoleSpy).toHaveBeenCalledWith('test_field: "test value"');
     expect(consoleSpy).toHaveBeenCalledWith('test_dropdown: "Option 1"');
 

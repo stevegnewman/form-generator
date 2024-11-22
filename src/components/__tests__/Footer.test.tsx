@@ -5,8 +5,8 @@ import { Footer } from '../Footer';
 describe('Footer', () => {
   it('renders footer text correctly', () => {
     render(<Footer />);
-    expect(screen.getByText(/Submitted by steve newman/i)).toBeInTheDocument();
-    expect(screen.getByText(/21st november 2024/i)).toBeInTheDocument();
+    expect(screen.getByText(/Submitted for review by steve newman/i)).toBeInTheDocument();
+    expect(screen.getByText(/22nd november 2024/i)).toBeInTheDocument();
   });
 
   it('includes a horizontal rule', () => {

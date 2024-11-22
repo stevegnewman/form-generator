@@ -19,12 +19,8 @@ export default function App() {
 
   // Handle form submission from child component
   const handleSubmit = (formData: FormData) => {
-    // Log the complete object
-    console.log('Form Data (complete object):');
-    console.log(formData);
-
     // Log individual key-value pairs
-    console.log('\nForm Data (key-value pairs):');
+    console.log('\nForm Data (formData state variable output as key-value pairs):');
     Object.entries(formData).forEach(([key, value]) => {
       console.log(`${key}: "${value}"`);
     });

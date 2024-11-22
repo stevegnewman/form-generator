@@ -80,7 +80,7 @@ npm test -- -u -t "ComponentName"
 ---
 
 ## Using the app
-When the app is running goto [http://localhost:3000](http://localhost:3000) to view the form. Open the developer console in dev tools to view the output from form submissions. For clarity, the state object is logged as well as the key value pairs.
+When the app is running goto [http://localhost:3000](http://localhost:3000) to view the form. Open the developer console in dev tools to view the output from form submissions where the form values are logged as key value pairs.
 
 ---
 
@@ -183,17 +183,9 @@ Add a new object to the `questions` array:
 - Success messages appear for 5 seconds
 
 ### Form Submission
-The form data is logged to the console in two formats:
-1. Complete object:
-```javascript
-{
-  first_name: "John",
-  last_name: "Doe",
-  email: "john@example.com"
-}
-```
+The form data is logged to the console in the following format:
 
-2. Key-value pairs:
+Key-value pairs:
 ```
 first_name: "John"
 last_name: "Doe"
