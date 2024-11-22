@@ -9,8 +9,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:prettier/recommended',
+    'plugin:react-hooks/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -20,7 +19,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
     'react/react-in-jsx-scope': 'off', // Not needed in React 17+
     'react/prop-types': 'off', // We're using TypeScript
@@ -30,7 +29,6 @@ module.exports = {
       varsIgnorePattern: '^_',
     }],
     '@typescript-eslint/no-non-null-assertion': 'error', // Strict mode for non-null assertions
-    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
   },
   settings: {
     react: {
