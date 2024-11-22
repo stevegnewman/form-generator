@@ -77,6 +77,17 @@ Update a specific snapshot:
 npm test -- -u -t "ComponentName"
 ```
 
+### 7. Run linting
+To run eslint use:
+```bash
+npm run lint
+```
+
+To run the recommended fixes use:
+```bash
+npm run lint:fix
+```
+
 ---
 
 ## Using the app

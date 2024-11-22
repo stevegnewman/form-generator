@@ -23,20 +23,20 @@ export const Form: React.FC<FormProps> = ({ config, onSubmit }) => {
   React.useEffect(() => {
     const fieldNames = config.questions.flatMap(q => q.fields.map(f => f.name));
     const duplicates = fieldNames.filter((name, index) => fieldNames.indexOf(name) !== index);
-    
+
     if (duplicates.length > 0) {
       console.warn(
         `Warning: Duplicate field names found in form configuration: ${duplicates.join(', ')}. ` +
-        'This may cause unexpected behavior with form values.'
+          'This may cause unexpected behavior with form values.'
       );
     }
   }, [config]);
 
   // Handle individual field changes
   const handleFieldChange = (name: string, value: string) => {
-    setFormData((prev) => ({
+    setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
     // Clear error state when user starts typing
     if (showError) {
@@ -58,7 +58,7 @@ export const Form: React.FC<FormProps> = ({ config, onSubmit }) => {
   // Handle form submission with validation
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!isFormValid()) {
       setShowError(true);
       setTimeout(() => {
@@ -83,7 +83,7 @@ export const Form: React.FC<FormProps> = ({ config, onSubmit }) => {
         <div key={index} className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-bodyText">{question.title}</h2>
           {/* Render form fields for each section */}
-          {question.fields.map((field) => (
+          {question.fields.map(field => (
             <FormField
               key={field.name}
               field={field}
@@ -94,14 +94,9 @@ export const Form: React.FC<FormProps> = ({ config, onSubmit }) => {
         </div>
       ))}
       {/* Submit button with success/error states */}
-      <FormSubmit 
-        type="submit" 
-        fullWidth 
-        showSuccess={showSuccess}
-        showError={showError}
-      >
+      <FormSubmit type="submit" fullWidth showSuccess={showSuccess} showError={showError}>
         Submit
       </FormSubmit>
     </form>
   );
-}; 
+};

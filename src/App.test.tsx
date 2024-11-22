@@ -12,13 +12,18 @@ describe('App', () => {
   const mockConfig = {
     questions: [
       {
-        title: "Test Question",
+        title: 'Test Question',
         fields: [
-          { name: "test_field", label: "Test Field", type: "text" as const },
-          { name: "test_dropdown", label: "Test Dropdown", type: "dropdown" as const, options: ["Option 1", "Option 2"] }
-        ]
-      }
-    ]
+          { name: 'test_field', label: 'Test Field', type: 'text' as const },
+          {
+            name: 'test_dropdown',
+            label: 'Test Dropdown',
+            type: 'dropdown' as const,
+            options: ['Option 1', 'Option 2'],
+          },
+        ],
+      },
+    ],
   };
 
   beforeEach(() => {
@@ -26,23 +31,25 @@ describe('App', () => {
   });
 
   it('renders loading state initially and then the form', async () => {
-    let resolvePromise: (value: typeof mockConfig) => void;
-    const promise = new Promise<typeof mockConfig>((resolve) => {
+    let resolvePromise: (value: typeof mockConfig) => void = (_value: typeof mockConfig) => {
+      return;
+    };
+    const promise = new Promise<typeof mockConfig>(resolve => {
       resolvePromise = resolve;
     });
-    
+
     mockGetFormConfig.mockReturnValue(promise);
 
     render(<App />);
-    
+
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
-    
-    resolvePromise!(mockConfig);
-    
+
+    resolvePromise(mockConfig);
+
     await waitFor(() => {
       expect(screen.getByText('Test Question')).toBeInTheDocument();
     });
-    
+
     expect(screen.getByLabelText('Test Field')).toBeInTheDocument();
     expect(screen.getByLabelText('Test Dropdown')).toBeInTheDocument();
   });
@@ -50,7 +57,7 @@ describe('App', () => {
   it('updates form state when fields change', async () => {
     mockGetFormConfig.mockResolvedValue(mockConfig);
     const consoleSpy = jest.spyOn(console, 'log');
-    
+
     render(<App />);
 
     await waitFor(() => {
@@ -58,11 +65,11 @@ describe('App', () => {
     });
 
     fireEvent.change(screen.getByLabelText('Test Field'), {
-      target: { value: 'test value' }
+      target: { value: 'test value' },
     });
 
     fireEvent.change(screen.getByLabelText('Test Dropdown'), {
-      target: { value: 'Option 1' }
+      target: { value: 'Option 1' },
     });
 
     fireEvent.submit(screen.getByRole('button'));
@@ -81,7 +88,7 @@ describe('App', () => {
 
   it('shows success message and clears form on submission', async () => {
     mockGetFormConfig.mockResolvedValue(mockConfig);
-    
+
     render(<App />);
 
     await waitFor(() => {
@@ -90,11 +97,11 @@ describe('App', () => {
 
     // Fill out all required fields
     fireEvent.change(screen.getByLabelText('Test Field'), {
-      target: { value: 'test value' }
+      target: { value: 'test value' },
     });
 
     fireEvent.change(screen.getByLabelText('Test Dropdown'), {
-      target: { value: 'Option 1' }
+      target: { value: 'Option 1' },
     });
 
     // Submit the form
@@ -114,7 +121,7 @@ describe('App', () => {
 
   it('shows error message when submitting empty form', async () => {
     mockGetFormConfig.mockResolvedValue(mockConfig);
-    
+
     render(<App />);
 
     await waitFor(() => {
@@ -131,4 +138,4 @@ describe('App', () => {
       expect(screen.getByText(/please complete form/i)).toBeInTheDocument();
     });
   });
-}); 
+});

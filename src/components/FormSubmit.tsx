@@ -21,7 +21,8 @@ export const FormSubmit: React.FC<FormSubmitProps> = ({
 }) => {
   const getStateStyles = () => {
     if (showSuccess) return 'hover:bg-primary hover:text-bodyText cursor-default';
-    if (showError) return 'bg-red-500 border-red-500 text-white hover:bg-white hover:text-red-500 cursor-not-allowed';
+    if (showError)
+      return 'bg-red-500 border-red-500 text-white hover:bg-white hover:text-red-500 cursor-not-allowed';
     return '';
   };
 
@@ -41,4 +42,4 @@ export const FormSubmit: React.FC<FormSubmitProps> = ({
       {getMessage()}
     </Button>
   );
-}; 
+};

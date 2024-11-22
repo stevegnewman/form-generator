@@ -10,21 +10,21 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
  * Reusable Button component for basic button styling.
  * Supports primary/secondary styles and full width option.
  */
-export const Button: React.FC<ButtonProps> = ({ 
-  variant = 'primary', 
+export const Button: React.FC<ButtonProps> = ({
+  variant = 'primary',
   fullWidth = false,
-  children, 
+  children,
   className = '',
-  ...props 
+  ...props
 }) => {
-  const baseStyles = "py-[7px] px-[30px] rounded-3xl transition-all duration-200 font-bold";
-  
+  const baseStyles = 'py-[7px] px-[30px] rounded-3xl transition-all duration-200 font-bold';
+
   const variantStyles = {
-    primary: "bg-primary text-white hover:bg-white hover:text-bodyText border-2 border-primary",
-    secondary: "bg-white text-bodyText hover:bg-primary hover:text-white border-2 border-primary"
+    primary: 'bg-primary text-white hover:bg-white hover:text-bodyText border-2 border-primary',
+    secondary: 'bg-white text-bodyText hover:bg-primary hover:text-white border-2 border-primary',
   };
-    
-  const widthStyles = fullWidth ? "w-full" : "w-auto";
+
+  const widthStyles = fullWidth ? 'w-full' : 'w-auto';
 
   return (
     <button
@@ -34,4 +34,4 @@ export const Button: React.FC<ButtonProps> = ({
       {children}
     </button>
   );
-}; 
+};

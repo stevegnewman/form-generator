@@ -16,4 +16,4 @@ export interface FormConfig {
 
 export interface FormData {
   [key: string]: string;
-} 
+}

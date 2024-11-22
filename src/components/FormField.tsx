@@ -17,10 +17,7 @@ export const FormField: React.FC<FormFieldProps> = ({ field, value, onChange }) 
   if (field.type === 'dropdown') {
     return (
       <div className="mb-4">
-        <label 
-          htmlFor={field.name}
-          className="block text-bodyText text-sm font-bold mb-2"
-        >
+        <label htmlFor={field.name} className="block text-bodyText text-sm font-bold mb-2">
           {field.label}
         </label>
         <select
@@ -29,11 +26,11 @@ export const FormField: React.FC<FormFieldProps> = ({ field, value, onChange }) 
                      focus:ring-2 focus:ring-primary focus:border-primary
                      outline-none transition-all duration-200 cursor-pointer"
           value={value}
-          onChange={(e) => onChange(field.name, e.target.value)}
+          onChange={e => onChange(field.name, e.target.value)}
         >
           <option value="">Select {field.label}</option>
           {/* Map through provided options */}
-          {field.options?.map((option) => (
+          {field.options?.map(option => (
             <option key={option} value={option}>
               {option}
             </option>
@@ -46,9 +43,7 @@ export const FormField: React.FC<FormFieldProps> = ({ field, value, onChange }) 
   // Render text input (default)
   return (
     <div className="mb-4">
-      <label 
-        htmlFor={field.name}
-        className="block text-bodyText text-sm font-bold mb-2">
+      <label htmlFor={field.name} className="block text-bodyText text-sm font-bold mb-2">
         {field.label}
       </label>
       <input
@@ -58,8 +53,8 @@ export const FormField: React.FC<FormFieldProps> = ({ field, value, onChange }) 
                    focus:ring-2 focus:ring-primary focus:border-primary
                    outline-none transition-all duration-200"
         value={value}
-        onChange={(e) => onChange(field.name, e.target.value)}
+        onChange={e => onChange(field.name, e.target.value)}
       />
     </div>
   );
-}; 
+};

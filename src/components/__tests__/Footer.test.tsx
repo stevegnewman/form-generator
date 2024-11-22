@@ -20,4 +20,4 @@ describe('Footer', () => {
     const { container } = render(<Footer />);
     expect(container).toMatchSnapshot();
   });
-}); 
+});

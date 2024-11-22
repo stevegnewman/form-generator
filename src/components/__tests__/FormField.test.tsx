@@ -13,7 +13,7 @@ describe('FormField', () => {
     const textField = {
       name: 'first_name',
       label: 'First Name',
-      type: 'text' as const
+      type: 'text' as const,
     };
 
     render(<FormField field={textField} value="" onChange={mockOnChange} />);
@@ -27,7 +27,7 @@ describe('FormField', () => {
       name: 'country',
       label: 'Country',
       type: 'dropdown' as const,
-      options: ['Canada', 'USA']
+      options: ['Canada', 'USA'],
     };
 
     render(<FormField field={dropdownField} value="" onChange={mockOnChange} />);
@@ -41,7 +41,7 @@ describe('FormField', () => {
     const textField = {
       name: 'first_name',
       label: 'First Name',
-      type: 'text' as const
+      type: 'text' as const,
     };
 
     render(<FormField field={textField} value="" onChange={mockOnChange} />);
@@ -55,7 +55,7 @@ describe('FormField', () => {
       name: 'country',
       label: 'Country',
       type: 'dropdown' as const,
-      options: ['Canada', 'USA']
+      options: ['Canada', 'USA'],
     };
 
     render(<FormField field={dropdownField} value="" onChange={mockOnChange} />);
@@ -69,16 +69,10 @@ describe('FormField', () => {
     const textField = {
       name: 'test_field',
       label: 'Test Field',
-      type: 'text' as const
+      type: 'text' as const,
     };
 
-    const { container } = render(
-      <FormField 
-        field={textField} 
-        value="" 
-        onChange={mockOnChange} 
-      />
-    );
+    const { container } = render(<FormField field={textField} value="" onChange={mockOnChange} />);
     expect(container).toMatchSnapshot();
   });
 
@@ -87,16 +81,12 @@ describe('FormField', () => {
       name: 'test_dropdown',
       label: 'Test Dropdown',
       type: 'dropdown' as const,
-      options: ['Option 1', 'Option 2']
+      options: ['Option 1', 'Option 2'],
     };
 
     const { container } = render(
-      <FormField 
-        field={dropdownField} 
-        value="" 
-        onChange={mockOnChange} 
-      />
+      <FormField field={dropdownField} value="" onChange={mockOnChange} />
     );
     expect(container).toMatchSnapshot();
   });
-}); 
+});

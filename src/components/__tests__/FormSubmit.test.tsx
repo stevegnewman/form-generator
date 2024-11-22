@@ -12,7 +12,7 @@ describe('FormSubmit', () => {
   it('shows success message and disables button when showSuccess is true', () => {
     render(<FormSubmit showSuccess>Submit</FormSubmit>);
     const button = screen.getByRole('button');
-    
+
     expect(button).toHaveTextContent('Form Submitted Successfully!');
     expect(button).toBeDisabled();
     expect(button).toHaveClass('cursor-default');
@@ -21,7 +21,7 @@ describe('FormSubmit', () => {
   it('shows error message and disables button when showError is true', () => {
     render(<FormSubmit showError>Submit</FormSubmit>);
     const button = screen.getByRole('button');
-    
+
     expect(button).toHaveTextContent('Please complete form');
     expect(button).toBeDisabled();
     expect(button).toHaveClass('cursor-not-allowed');
@@ -36,4 +36,4 @@ describe('FormSubmit', () => {
     render(<FormSubmit className="test-class">Submit</FormSubmit>);
     expect(screen.getByRole('button')).toHaveClass('test-class');
   });
-}); 
+});
