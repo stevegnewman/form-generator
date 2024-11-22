@@ -176,4 +176,74 @@ describe('Form', () => {
     fireEvent.submit(screen.getByRole('button'));
     expect(container).toMatchSnapshot();
   });
+
+  it('warns about duplicate field names in config', () => {
+    const consoleSpy = jest.spyOn(console, 'warn').mockImplementation();
+    const duplicateConfig: FormConfig = {
+      questions: [
+        {
+          title: "Test Question 1",
+          fields: [
+            { name: "duplicate_field", label: "First Duplicate", type: "text" }
+          ]
+        },
+        {
+          title: "Test Question 2",
+          fields: [
+            { name: "duplicate_field", label: "Second Duplicate", type: "text" }
+          ]
+        }
+      ]
+    };
+
+    render(<Form config={duplicateConfig} onSubmit={mockOnSubmit} />);
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+      expect.stringContaining('Warning: Duplicate field names found')
+    );
+    expect(consoleSpy).toHaveBeenCalledWith(
+      expect.stringContaining('duplicate_field')
+    );
+
+    consoleSpy.mockRestore();
+  });
+
+  it('handles duplicate field names by using latest value', () => {
+    const duplicateConfig: FormConfig = {
+      questions: [
+        {
+          title: "Test Question 1",
+          fields: [
+            { name: "duplicate_field", label: "First Duplicate", type: "text" }
+          ]
+        },
+        {
+          title: "Test Question 2",
+          fields: [
+            { name: "duplicate_field", label: "Second Duplicate", type: "text" }
+          ]
+        }
+      ]
+    };
+
+    render(<Form config={duplicateConfig} onSubmit={mockOnSubmit} />);
+
+    // Change first field
+    fireEvent.change(screen.getByLabelText('First Duplicate'), {
+      target: { value: 'first value' }
+    });
+
+    // Change second field
+    fireEvent.change(screen.getByLabelText('Second Duplicate'), {
+      target: { value: 'second value' }
+    });
+
+    // Submit form
+    fireEvent.submit(screen.getByRole('button', { name: /submit/i }));
+
+    // Check that the latest value is used
+    expect(mockOnSubmit).toHaveBeenCalledWith({
+      duplicate_field: 'second value'
+    });
+  });
 }); 

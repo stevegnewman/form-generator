@@ -13,6 +13,7 @@ export const getFormConfig = async (): Promise<FormConfig> => {
         questions: [
           {
             title: "Tell us about yourself",
+            // Field names must be unique
             fields: [
               { name: "first_name", label: "First Name", type: "text" },
               { name: "last_name", label: "Last Name", type: "text" },
@@ -22,6 +23,7 @@ export const getFormConfig = async (): Promise<FormConfig> => {
           },
           {
             title: "Where do you live?",
+            // Field names must be unique
             fields: [
               { name: "street_address", label: "Street Address", type: "text" },
               { name: "post_code", label: "Post Code", type: "text" },

@@ -107,6 +107,7 @@ The form is generated from a JSON configuration that follows this structure:
 ```
 
 ### Adding New Fields
+When adding new fields the user will need to follow best practices and use unique field names. This will avoid unexpected behaviour, validation has been added to warn the user if duplicates are used.
 
 1. **Text Input Field**:
 ```json

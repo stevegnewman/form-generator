@@ -18,6 +18,20 @@ export const Form: React.FC<FormProps> = ({ config, onSubmit }) => {
   const [showSuccess, setShowSuccess] = React.useState(false);
   const [showError, setShowError] = React.useState(false);
 
+  // Validate config for duplicate field names, this is to ensure the
+  // form is using best practices and using unique field names.
+  React.useEffect(() => {
+    const fieldNames = config.questions.flatMap(q => q.fields.map(f => f.name));
+    const duplicates = fieldNames.filter((name, index) => fieldNames.indexOf(name) !== index);
+    
+    if (duplicates.length > 0) {
+      console.warn(
+        `Warning: Duplicate field names found in form configuration: ${duplicates.join(', ')}. ` +
+        'This may cause unexpected behavior with form values.'
+      );
+    }
+  }, [config]);
+
   // Handle individual field changes
   const handleFieldChange = (name: string, value: string) => {
     setFormData((prev) => ({
