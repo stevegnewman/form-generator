@@ -67,15 +67,14 @@ describe('App', () => {
 
     fireEvent.submit(screen.getByRole('button'));
 
-    const expectedFormData = {
-      test_field: 'test value',
-      test_dropdown: 'Option 1'
-    };
-
-    // Updated expectations to match new console.log messages
-    expect(consoleSpy).toHaveBeenCalledWith('\nForm Data (formData state variable output as key-value pairs):');
-    expect(consoleSpy).toHaveBeenCalledWith('test_field: "test value"');
-    expect(consoleSpy).toHaveBeenCalledWith('test_dropdown: "Option 1"');
+    // Check console.log calls with new formatting
+    expect(consoleSpy).toHaveBeenNthCalledWith(
+      1,
+      '%c\nForm Data (formData state variable output as key-value pairs):',
+      'color: green;'
+    );
+    expect(consoleSpy).toHaveBeenNthCalledWith(2, 'test_field: "test value"');
+    expect(consoleSpy).toHaveBeenNthCalledWith(3, 'test_dropdown: "Option 1"');
 
     consoleSpy.mockRestore();
   });

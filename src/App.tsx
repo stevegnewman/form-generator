@@ -20,7 +20,10 @@ export default function App() {
   // Handle form submission from child component
   const handleSubmit = (formData: FormData) => {
     // Log individual key-value pairs
-    console.log('\nForm Data (formData state variable output as key-value pairs):');
+    console.log(
+      "%c\nForm Data (formData state variable output as key-value pairs):",
+      "color: green;"
+    );
     Object.entries(formData).forEach(([key, value]) => {
       console.log(`${key}: "${value}"`);
     });
